@@ -1,0 +1,39 @@
+Question 1: What authentication scheme is used by default in Django Rest Framework's browsable API? How is this managed?
+BasicAuthentication and SessionAuthentication.
+
+Question 2: What authentication scheme is used by httpie when querying with the -a or --auth option flag?
+No idea?
+
+http -a username:password POST http://127.0.0.1:8000/api/snippets/ code="print(123)"
+HTTP/1.1 201 Created
+Allow: GET, POST, HEAD, OPTIONS
+Content-Length: 200
+Content-Type: application/json
+Date: Tue, 09 Mar 2021 00:46:56 GMT
+Location: http://127.0.0.1:8000/api/snippets/1/
+Server: WSGIServer/0.2 CPython/3.6.5
+Vary: Accept
+X-Frame-Options: SAMEORIGIN
+
+{
+    "code": "print(123)",
+    "highlight": "http://127.0.0.1:8000/1/",
+    "id": 1,
+    "language": "python",
+    "linenos": false,
+    "owner": "jawadrizvi",
+    "style": "friendly",
+    "title": "",
+    "url": "http://127.0.0.1:8000/api/snippets/1/"
+}
+
+Reference: https://security.stackexchange.com/questions/81756/session-authentication-vs-token-authentication
+Question 3: What is the difference between Session Authentication and Token Authentication? How is Token Authentication an improvement over Basic Authentication?
+Session Authentication is stateful. When the user logs in, their session is stored in a database, and a session id is stored as a cookie.
+Token Authentication is stateless. When the user logs in, an encrypted token with an expiry date is stored as a cookie, which is used to authenticate requests.
+Basic Authentication is ...
+
+Token auth is better than session auth because there's no need for the server to keep track of sessions. It may also be better in terms of security.
+Token auth is better than basic auth because ...
+
+Question 4: Provide a high level summary of what happens during an OAuth2 authentication flow. For instance: bitbucket.org > Log In > Log in with Google. What happens when I click "Log in with Google"?
